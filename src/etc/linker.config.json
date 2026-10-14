@@ -1,0 +1,22 @@
+{
+	"provideLibs": [	
+		    "libdummy_binary_libziparchive.a-x86_64-v2.so",
+		    "libdummy_binary_libziparchive.a.so",
+		    "libdummy_ext_libziparchive-x86_64-v2.so",
+		    "libdummy_ext_libziparchive.so",
+		    "libdummy_headers_ext_libziparchive-x86_64-v2.so",
+		    "libdummy_headers_ext_libziparchive.so",
+		    "libziparchive-x86_64-v2.so",
+		    "libziparchive.so"
+	],
+	"requireLibs": [	
+		    "libbase.so",
+		    "libc++_shared.so",
+		    "libc.so",
+		    "libdl.so",
+		    "liblog.so",
+		    "libm.so",
+		    "libz.so"
+	],
+	"visible": true
+}
