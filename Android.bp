@@ -76,6 +76,10 @@ cc_defaults {
     ],
     },
 }
+cc_defaults {
+    name: "libziparchive_defaults",
+    export_include_dirs: ["src/include"],
+}
 
 cc_defaults {
     name: "libziparchive_lib_defaults",
