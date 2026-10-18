@@ -7,6 +7,8 @@ package {
 
 cc_prebuilt_library {
     name: "libziparchive",
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
     vendor_available: true,
     product_available: true,
     recovery_available: true,
@@ -113,6 +115,24 @@ cc_defaults {
     "com.android.art",
     "com.android.art.debug",
     "com.android.virt",
+    ],
+    min_sdk_version: "apex_inherit",
+}
+
+cc_prebuilt_library_static {
+    name: "libziparchive_for_incfs",
+    vendor_available: true,
+    product_available: true,
+    recovery_available: true,
+    host_supported: true,
+    srcs: ["src/lib/libziparchive.a"],
+    export_include_dirs: ["src/include"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.art",
+        "com.android.art.debug",
+        "com.android.runtime",
+        "com.android.virt",
     ],
     min_sdk_version: "apex_inherit",
 }
