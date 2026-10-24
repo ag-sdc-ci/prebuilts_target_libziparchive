@@ -20,13 +20,29 @@ cc_prebuilt_library {
     prefer: true,
     apex_available: [
         "com.android.runtime",
+        "com.android.art",
+        "com.android.art.debug",
+        "//apex_available:platform",
+        "//apex_available:anyapex",
     ],
     min_sdk_version: "29",
-    shared: {
-        srcs: ["src/lib/libziparchive.so"],
-    },
-    static: {
-        srcs: ["src/lib/libziparchive.a"],
+    multilib: {
+        lib32: {
+            shared: {
+                srcs: ["src/lib/libziparchive.so"],
+            },
+            static: {
+                srcs: ["src/lib/libziparchive.a"],
+            },
+        },
+        lib64: {
+            shared: {
+                srcs: ["src/lib64/libziparchive.so"],
+            },
+            static: {
+                srcs: ["src/lib64/libziparchive.a"],
+            },
+        },
     },
 }
 
@@ -114,7 +130,6 @@ cc_defaults {
     "//apex_available:platform",
     "com.android.art",
     "com.android.art.debug",
-    "com.android.virt",
     ],
     min_sdk_version: "apex_inherit",
 }
@@ -125,14 +140,20 @@ cc_prebuilt_library_static {
     product_available: true,
     recovery_available: true,
     host_supported: true,
-    srcs: ["src/lib/libziparchive.a"],
+    multilib: {
+        lib32: {
+            srcs: ["src/lib/libziparchive.a"],
+        },
+        lib64: {
+            srcs: ["src/lib64/libziparchive.a"],
+        },
+    },
     export_include_dirs: ["src/include"],
     apex_available: [
         "//apex_available:platform",
         "com.android.art",
         "com.android.art.debug",
         "com.android.runtime",
-        "com.android.virt",
     ],
     min_sdk_version: "apex_inherit",
 }
